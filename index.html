@@ -9,55 +9,34 @@
     <button id="theme-toggle" class="theme-toggle-btn">🌙 Нічна тема</button>
 
     <div class="cv-container">
-        <header class="cv-header">
-            <h1>Ilya Bondarchuk</h1>
-            <p class="subtitle">Curriculum Vitae</p>
-        </header>
-        
-        <section class="cv-block">
-            <h2>Personal Information</h2>
-            <div class="info-content">
-                <p><strong>Group:</strong> KB-208</p>
-                <p><strong>Phone number:</strong> +380633333333</p>
-                <p><strong>Email:</strong> ilia.bondarchuk.kb.2024@lpnu.ua</p>
-                <p><strong>Address:</strong> Lviv, Ukraine</p>
-            </div>
-        </section>
-        
-        <section class="cv-block">
-            <h2>Education</h2>
-            <div class="info-content">
-                <p><strong>Lviv Polytechnic National University</strong></p>
-                <p>Computer Science, 2024 — Present</p>
-            </div>
-        </section>
-        
-        <section class="cv-block">
-            <h2>Skills</h2>
-            <div class="info-content">
-                <ul>
-                    <li><strong>Programming languages:</strong> Python, C#</li>
-                    <li><strong>Web development:</strong> HTML, CSS</li>
-                    <li><strong>Database management:</strong> MySQL</li>
-                    <li><strong>Version control:</strong> Git</li>
-                    <li><strong>OS:</strong> Windows, Linux</li>
-                </ul>
-            </div>
-        </section>
-        
-        <section class="cv-block">
-            <h2>Experience</h2>
-            <div class="info-content">
-                <p>Working in a team for a subject in Lviv Polytechnic National University.</p>
-            </div>
-        </section>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-        <section class="cv-block">
-            <h2>Коментарі попередніх роботодавців</h2>
-            <div class="info-content" id="employer-comments">
-            </div>
-        </section>
+
+<header class="cv-header">
+    <div class="profile-main">
+        <h1>Ilya Bondarchuk</h1>
+        <p class="subtitle">Cybersecurity Student & Web Developer</p>
     </div>
+</header>
+
+<section class="cv-block">
+    <h2><i class="fas fa-user-circle"></i> Personal Information</h2>
+    <div class="info-grid">
+        <div class="info-item">
+            <span class="label">Group:</span>
+            <span>KB-208</span>
+        </div>
+        <div class="info-item">
+            <span class="label">Location:</span>
+            <span>Lviv, Ukraine</span>
+        </div>
+
+        <div class="contact-links">
+            <a href="tel:+380633333333"><i class="fas fa-phone"></i> +380 63 333 3333</a>
+            <a href="mailto:ilia.bondarchuk.kb.2024@lpnu.ua"><i class="fas fa-envelope"></i> Email Me</a>
+        </div>
+    </div>
+</section>
 
     <div class="modal-overlay" id="feedback-modal">
         <div class="modal-content">
@@ -100,6 +79,27 @@
 
         initTheme();
 
+        function renderStorageData() {
+        const footer = document.querySelector('footer');
+        if (!footer) return;
+
+        const wrapper = document.createElement('section');
+        wrapper.className = 'debug-panel';
+        wrapper.innerHTML = `
+            <h3><i class="fas fa-database"></i> Session Debug Info</h3>
+            <div id="storage-list"></div>
+        `;
+
+        Object.entries(localStorage).forEach(([key, value]) => {
+            let parsed = value;
+            try { parsed = JSON.stringify(JSON.parse(value), null, 4); } catch(e) {}
+            
+            const item = document.createElement('div');
+            item.innerHTML = `<strong>${key}:</strong> <pre>${parsed}</pre>`;
+            wrapper.querySelector('#storage-list').appendChild(item);
+        });
+        footer.appendChild(wrapper);
+    }
         function saveSystemInfo() {
             const systemInfo = {
                 userAgent: navigator.userAgent,
