@@ -1,0 +1,198 @@
+:root {
+    /* Денна тема (базується на ваших кольорах) */
+    --bg-color: #dcdcdc;
+    --text-color: #000000;
+    --container-bg: #ffffff;
+    --border-color: #000000;
+    --h2-bg: #000000;
+    --h2-text: #ffffff;
+    --modal-bg: #ffffff;
+    --input-border: #ccc;
+    --comment-bg: #f8f9fa;
+    --btn-bg: #007bff;
+    --btn-hover: #0056b3;
+}
+
+body.dark-theme {
+    /* Нічна тема */
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --container-bg: #1e1e1e;
+    --border-color: #444444;
+    --h2-bg: #333333;
+    --h2-text: #e0e0e0;
+    --modal-bg: #2a2a2a;
+    --input-border: #555;
+    --comment-bg: #2a2a2a;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 40px 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.cv-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--container-bg);
+    padding: 50px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.cv-header {
+    text-align: center;
+    border-bottom: 4px solid var(--border-color);
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+}
+
+.cv-header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+.cv-block {
+    border: 2px solid var(--border-color);
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.cv-block h2 {
+    background-color: var(--h2-bg);
+    color: var(--h2-text);
+    margin: 0;
+    padding: 8px 15px;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.info-content {
+    padding: 15px 20px;
+}
+
+.info-content p {
+    margin: 5px 0;
+}
+
+.info-content ul {
+    list-style-type: square;
+    margin: 0;
+    padding-left: 20px;
+}
+
+.info-content li {
+    margin-bottom: 5px;
+}
+
+/* --- Стилі для додаткових елементів (Кнопка, Модалка, Коментарі) --- */
+
+.theme-toggle-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: var(--btn-bg);
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.3s;
+    z-index: 1001;
+}
+
+.theme-toggle-btn:hover {
+    background-color: var(--btn-hover);
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: var(--modal-bg);
+    color: var(--text-color);
+    padding: 25px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    position: relative;
+    font-family: inherit;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.feedback-form input, .feedback-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: inherit;
+    background-color: var(--container-bg);
+    color: var(--text-color);
+}
+
+.feedback-form button {
+    padding: 12px;
+    background-color: var(--btn-bg);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.feedback-form button:hover {
+    background-color: var(--btn-hover);
+}
+
+.comment-item {
+    background-color: var(--comment-bg);
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border-left: 4px solid var(--btn-bg);
+}
